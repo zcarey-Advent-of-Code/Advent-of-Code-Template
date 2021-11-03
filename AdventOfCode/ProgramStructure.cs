@@ -32,16 +32,21 @@ namespace AdventOfCode {
 		public void Run(string[] args, string filename = "Input.txt") {
 			parseArgs(args);
 
-			Console.WriteLine("Parsing input...");
+			Console.WriteLine("Reading input...");
 			Console.WriteLine();
 			Console.WriteLine();
 			T input = default(T);
 
 			// Load the file into memory to prevent "closed file" exceptions later
 			MemoryStream file = new MemoryStream();
-			using (FileStream stream = File.OpenRead(filename)) {
-				stream.CopyTo(file);
-				stream.Flush();
+			try {
+				using (FileStream stream = File.OpenRead(filename)) {
+					stream.CopyTo(file);
+					stream.Flush();
+				}
+			} catch (Exception) {
+				Console.WriteLine("Unable to read input file.");
+				return;
 			}
 
 			using (file) {

@@ -17,7 +17,7 @@ namespace Day_01 {
 		}
 
 		protected override object SolvePart1(string input) {
-			return null;
+			return input;
 		}
 
 		protected override object SolvePart2(string input) {
