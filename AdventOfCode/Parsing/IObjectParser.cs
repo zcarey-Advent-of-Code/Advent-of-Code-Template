@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AdventOfCode.Parsing {
-
 	/// <summary>
 	/// Used for parsing objects, since a new object needs to be created for every input needed.
 	/// </summary>

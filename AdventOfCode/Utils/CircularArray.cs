@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Common {
-
 	/// <summary>
 	/// A standard array except elements are accesed in a circular fashion.
 	/// </summary>
@@ -18,7 +17,7 @@ namespace Common {
 		/// <summary>
 		/// The current index of the array. This value will always be in the range [0, Capacity).
 		/// </summary>
-		public int Index { 
+		public int Index {
 			get => index;
 			set {
 				index = ((value % array.Length) + array.Length) % array.Length;
@@ -29,7 +28,7 @@ namespace Common {
 		/// The current selected element in the array. 
 		/// This is based on the Index and can be changed using 'Move(int offset)', 'Next(int count)', or 'Previous(int count)'.
 		/// </summary>
-		public T Current { 
+		public T Current {
 			get => array[index];
 			set => array[index] = value;
 		}
@@ -57,7 +56,7 @@ namespace Common {
 		/// <param name="initialize"></param>
 		public CircularArray(int size, IEnumerable<T> initialize) : this(size) {
 			int index = 0;
-			foreach(T element in initialize.Take(size)) {
+			foreach (T element in initialize.Take(size)) {
 				array[index++] = element;
 			}
 		}
@@ -66,7 +65,7 @@ namespace Common {
 		/// Initialize the array with a given set of elements. The capacity of the array is determined by the number of elements given.
 		/// </summary>
 		/// <param name="initialize"></param>
-		public CircularArray(IEnumerable<T> initialize) : this(initialize.Count(), initialize){ 
+		public CircularArray(IEnumerable<T> initialize) : this(initialize.Count(), initialize) {
 		}
 
 		/// <summary>
@@ -233,7 +232,7 @@ namespace Common {
 		/// <param name="count"></param>
 		public void Fill(IEnumerable<T> elements, int count) {
 			int index = this.index;
-			foreach(T element in elements.Take(count)) {
+			foreach (T element in elements.Take(count)) {
 				array[index] = element;
 				index = (index + 1) % array.Length;
 			}

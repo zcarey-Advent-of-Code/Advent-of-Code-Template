@@ -1,5 +1,6 @@
 ﻿using AdventOfCode;
 using AdventOfCode.Parsing;
+using AdventOfCode.Visualization;
 using AdventOfCode.Utils;
 using System;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace Day_01 {
 			new Program().Run(args);
 		}
 
-		protected override object SolvePart1(string input) {
+		// Parameter "visualizer" is null unless program is ran with "--visualizer" flag.
+		protected override object SolvePart1(string input, Visualizer visualizer) {
 			return input;
 		}
 
-		protected override object SolvePart2(string input) {
+		// Parameter "visualizer" is null unless program is ran with "--visualizer" flag.
+		protected override object SolvePart2(string input, Visualizer visualizer) {
 			return null;
 		}
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AdventOfCode.Parsing {
-
 	/// <summary>
 	/// Returns the lines of strings that are separated by a single blank line (text blocks)
 	/// </summary>
