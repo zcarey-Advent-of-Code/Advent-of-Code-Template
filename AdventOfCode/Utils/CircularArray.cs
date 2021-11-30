@@ -34,7 +34,7 @@ namespace Common {
 		}
 
 		//The internal array used to store the elements.
-		private T[] array;
+		private readonly T[] array;
 
 		//The index in the array of the currently selected element.
 		private int index = 0;
@@ -120,9 +120,9 @@ namespace Common {
 		/// <param name="count"></param>
 		/// <returns></returns>
 		public T Next(int count = 1) {
-			if (count < 0) throw new ArgumentException("Count can't be negative. Consider using \'Move(int count)\' instead.", "count");
+			if (count < 0) throw new ArgumentException("Count can't be negative. Consider using \'Move(int count)\' instead.", nameof(count));
 			index += count;
-			index = index % array.Length;
+			index %= array.Length;
 			return array[index];
 		}
 
@@ -145,7 +145,7 @@ namespace Common {
 		/// <param name="count"></param>
 		/// <returns></returns>
 		public T Previous(int count = 1) {
-			if (count < 0) throw new ArgumentException("Count can't be negative. Consider using \'Move(int count)\' instead.", "count");
+			if (count < 0) throw new ArgumentException("Count can't be negative. Consider using \'Move(int count)\' instead.", nameof(count));
 			index -= count;
 			index = ((index % array.Length) + array.Length) % array.Length;
 			return array[index];

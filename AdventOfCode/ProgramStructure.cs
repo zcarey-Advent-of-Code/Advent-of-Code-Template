@@ -19,10 +19,10 @@ namespace AdventOfCode {
 		private bool arg_visualize = false;
 
 		// Run time timer
-		private Stopwatch timer = new Stopwatch();
+		private readonly Stopwatch timer = new();
 
 		// Input parser
-		private IParser<StreamReader, T> parser;
+		private readonly IParser<StreamReader, T> parser;
 
 		protected ProgramStructure(IParser<StreamReader, T> parser) {
 			this.parser = parser;
@@ -33,21 +33,20 @@ namespace AdventOfCode {
 		abstract protected object SolvePart2(T input, Visualizer vision);
 
 		public void Run(string[] args, string filename = "Input.txt") {
-			parseArgs(args);
+			ParseArgs(args);
 
 			Console.WriteLine("Reading input...");
 			Console.WriteLine();
 			Console.WriteLine();
-			T input = default(T);
+			T input;
 
 			// Load the file into memory to prevent "closed file" exceptions later
-			MemoryStream file = new MemoryStream();
+			MemoryStream file = new();
 			try {
-				using (FileStream stream = File.OpenRead(filename)) {
-					stream.CopyTo(file);
-					stream.Flush();
-				}
-			} catch (Exception) {
+                using FileStream stream = File.OpenRead(filename);
+                stream.CopyTo(file);
+                stream.Flush();
+            } catch (Exception) {
 				Console.WriteLine("Unable to read input file.");
 				return;
 			}
@@ -73,7 +72,7 @@ namespace AdventOfCode {
 					object result1 = SolvePart1(input, visualizer);
 					timer.Stop();
 					Console.WriteLine("Finished in {0:g}.", timer.Elapsed);
-					input = default(T);
+					input = default;
 
 					if (result1 == null) {
 						Console.WriteLine("Part 1 failed to return a result.");
@@ -107,7 +106,7 @@ namespace AdventOfCode {
 					object result2 = SolvePart2(input, visualizer);
 					timer.Stop();
 					Console.WriteLine("Finished in {0:g}.", timer.Elapsed);
-					input = default(T);
+					input = default;
 
 					if (result2 == null) {
 						Console.WriteLine("Part 2 failed to return a result.");
@@ -129,7 +128,7 @@ namespace AdventOfCode {
 			}
 		}
 
-		private void parseArgs(string[] args) {
+		private void ParseArgs(string[] args) {
 			foreach (string arg in args) {
 				if (arg == "--part1") {
 					arg_runPart1 = true;
