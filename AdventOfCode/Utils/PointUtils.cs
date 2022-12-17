@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode.Utils {
     public static class PointUtils {
-        public static int ManhattanDistance(Point left, Point right) {
+        public static int ManhattanDistance(this Point left, Point right) {
             return Math.Abs(left.X - right.X) + Math.Abs(left.Y - right.Y);
         }
     }
