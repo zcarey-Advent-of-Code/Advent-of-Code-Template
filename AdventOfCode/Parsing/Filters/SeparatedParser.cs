@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AdventOfCode.Parsing {
-	public class SeparatedParser : IParser<string, IEnumerable<string>> {
+	public class SeparatedParser : IParserFilter<string, string> {
 
 		private string separator;
 

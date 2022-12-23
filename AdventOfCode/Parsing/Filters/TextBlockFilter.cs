@@ -7,7 +7,7 @@ namespace AdventOfCode.Parsing {
 	/// <summary>
 	/// Returns the lines of strings that are separated by a single blank line (text blocks)
 	/// </summary>
-	public class TextBlockFilter : IParser<IEnumerable<string>, IEnumerable<string[]>> {
+	public class TextBlockFilter : IParserFilter<IEnumerable<string>, string[]> {
 		internal override IEnumerable<string[]> Parse(IEnumerable<string> input) {
 			List<string> group = new List<string>();
 			foreach (string line in input) {
