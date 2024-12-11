@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Parsing\Parsers\" />
+    <Compile Remove="Parsing\Parsers\**" />
+    <EmbeddedResource Remove="Parsing\Parsers\**" />
+    <None Remove="Parsing\Parsers\**" />
   </ItemGroup>
 
 </Project>
